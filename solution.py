@@ -1,7 +1,7 @@
 
 from socket import *
 
-def smtp_client(port, mailserver):  #=1025, mailserver='127.0.0.1'):
+def smtp_client(port, mailserver):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
 
@@ -31,21 +31,21 @@ def smtp_client(port, mailserver):  #=1025, mailserver='127.0.0.1'):
     # Send MAIL FROM command and handle server response.
     # Fill in start
     mailFrom = 'MAIL FROM:<bk2557@nyu.edu>\r\n'
-    clientSocket.send(mailFrom.endcode())
+    clientSocket.send(mailFrom.encode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     # Fill in start
     rcpt = 'RCPT TO:<test@nyu.edu>\r\n'
-    clientSocket.send(rcpt.endcode())
+    clientSocket.send(rcpt.encode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send DATA command and handle server response.
     # Fill in start
     dataCommand = 'DATA\r\n'
-    clientSocket.send(dataCommand.endcode())
+    clientSocket.send(dataCommand.encode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
@@ -54,19 +54,19 @@ def smtp_client(port, mailserver):  #=1025, mailserver='127.0.0.1'):
     clientSocket.send('From: Me <bk2557@nyu.edu>\r\n'.encode())
     clientSocket.send('To: Me <bk2557@nyu.edu>\r\n'.encode())
     clientSocket.send('Subject: Test Message \r\n'.encode())
-    clientSocket.send(msg.endcode())
+    clientSocket.send(msg.encode())
     # Fill in end
 
     # Message ends with a single period, send message end and handle server response.
     # Fill in start
-    clientSocket.send(endmsg.endcode())
+    clientSocket.send(endmsg.encode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send QUIT command and handle server response.
     # Fill in start
     quitCommand = 'QUIT\r\n'
-    clientSocket.send(quitCommand.endcode())
+    clientSocket.send(quitCommand.encode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
