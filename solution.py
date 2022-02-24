@@ -1,14 +1,14 @@
 
 from socket import *
 
-def smtp_client(port=1025, mailserver='127.0.0.1'):
+def smtp_client(port, mailserver):  #=1025, mailserver='127.0.0.1'):
     msg = "\r\n My message"
     endmsg = "\r\n.\r\n"
 
 
     # Choose a mail server (e.g. Google mail server) if you want to verify the script beyond GradeScope
 
-    # Create socket called clientSocket and establish a TCP connection with mailserver and port
+    # Create socket called clientSocket and establish a TCP connection with `mail`server and port
 
     # Fill in start
     clientSocket = socket(AF_INET, SOCK_STREAM) # create TCP socket
@@ -30,23 +30,23 @@ def smtp_client(port=1025, mailserver='127.0.0.1'):
 
     # Send MAIL FROM command and handle server response.
     # Fill in start
-    mailFrom = 'MAIL FROM: <bk2557@nyu.edu>\r\n'
+    mailFrom = 'MAIL FROM:<bk2557@nyu.edu>\r\n'
     clientSocket.send(mailFrom.endcode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send RCPT TO command and handle server response.
     # Fill in start
-    rcpt = 'RCPT TO: <bk2557@nyu.edu>\r\n'
+    rcpt = 'RCPT TO:<test@nyu.edu>\r\n'
     clientSocket.send(rcpt.endcode())
     clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send DATA command and handle server response.
     # Fill in start
-    dataCommand = 'DATA \r\n'
+    dataCommand = 'DATA\r\n'
     clientSocket.send(dataCommand.endcode())
-    # clientSocket.recv(1024).decode()
+    clientSocket.recv(1024).decode()
     # Fill in end
 
     # Send message data.
